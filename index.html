@@ -3,869 +3,576 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Aura Healing Hub - You Matter. You Are Understood. You Are Whole.</title>
+    <title>Aura Healing Hub - Find Culturally Competent Mental Health Care</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Crimson+Pro:ital,wght@0,400;1,400&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'green-800': '#2F855A',
+                        'terracotta': '#C05621',
+                        'terracotta-border': '#D16B2C'
+                    },
+                    fontFamily: {
+                        'inter': ['Inter', 'sans-serif'],
+                        'crimson': ['Crimson Pro', 'serif']
+                    }
+                }
+            }
+        }
+    </script>
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
+        .chat-message {
+            animation: slideIn 0.3s ease-out;
         }
-
-        body {
-            font-family: 'Montserrat', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-            line-height: 1.6;
-            color: #2d3748;
+        
+        .typing-indicator {
+            animation: pulse 1.5s infinite;
         }
-
-        /* Crisis Banner */
-        .crisis-banner {
-            background: linear-gradient(135deg, #e53e3e 0%, #c53030 100%);
-            color: white;
-            padding: 16px 0;
-            position: sticky;
-            top: 0;
-            z-index: 1000;
-            box-shadow: 0 2px 8px rgba(229, 62, 62, 0.2);
+        
+        @keyframes slideIn {
+            from {
+                opacity: 0;
+                transform: translateY(10px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
         }
-
-        .crisis-content {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            max-width: 1440px;
-            margin: 0 auto;
-            padding: 0 20px;
-            gap: 20px;
+        
+        .badge-hover {
+            transition: all 0.2s ease;
         }
-
-        .crisis-icon {
-            flex-shrink: 0;
-        }
-
-        .crisis-text {
-            font-weight: 500;
-            font-size: 16px;
-            text-align: center;
-            flex-grow: 1;
-        }
-
-        .crisis-btn {
-            background: white;
-            color: #e53e3e;
-            border: none;
-            padding: 10px 20px;
-            border-radius: 25px;
-            font-weight: 600;
-            font-size: 14px;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            white-space: nowrap;
-        }
-
-        .crisis-btn:hover {
-            background: #f7fafc;
+        
+        .badge-hover:hover {
             transform: translateY(-1px);
-            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
         }
-
-        /* Header */
-        .header {
-            background: linear-gradient(135deg, #2f855a 0%, #38a169 100%);
-            color: white;
-            padding: 20px 0;
-        }
-
-        .nav-container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 20px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .logo {
-            font-size: 28px;
-            font-weight: 700;
-            color: white;
-        }
-
-        .nav-menu {
-            display: flex;
-            list-style: none;
-            gap: 30px;
-        }
-
-        .nav-menu a {
-            color: white;
-            text-decoration: none;
-            font-weight: 500;
-            transition: color 0.3s ease;
-        }
-
-        .nav-menu a:hover {
-            color: #c6f6d5;
-        }
-
-        .cta-btn {
-            background: #d69e2e;
-            color: white;
-            padding: 12px 24px;
-            border-radius: 25px;
-            text-decoration: none;
-            font-weight: 600;
+        
+        .therapist-card {
             transition: all 0.3s ease;
         }
-
-        .cta-btn:hover {
-            background: #b7791f;
-            transform: translateY(-2px);
-        }
-
-        /* Hero Section */
-        .hero {
-            background: linear-gradient(135deg, rgba(47, 133, 90, 0.9) 0%, rgba(56, 161, 105, 0.8) 100%), 
-                        url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 800" fill="none"><defs><pattern id="pattern" x="0" y="0" width="40" height="40" patternUnits="userSpaceOnUse"><circle cx="20" cy="20" r="2" fill="%23c6f6d5" opacity="0.1"/></pattern></defs><rect width="1200" height="800" fill="url(%23pattern)"/></svg>');
-            background-size: cover;
-            background-position: center;
-            padding: 80px 0;
-            text-align: center;
-            color: white;
-        }
-
-        .hero-container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 20px;
-        }
-
-        .hero h1 {
-            font-size: 3.5rem;
-            font-weight: 700;
-            margin-bottom: 20px;
-            text-shadow: 0 2px 4px rgba(0,0,0,0.1);
-        }
-
-        .hero-subtitle {
-            font-size: 1.5rem;
-            margin-bottom: 15px;
-            color: #c6f6d5;
-            font-weight: 500;
-        }
-
-        .hero-description {
-            font-size: 1.2rem;
-            margin-bottom: 40px;
-            max-width: 800px;
-            margin-left: auto;
-            margin-right: auto;
-            opacity: 0.95;
-        }
-
-        .hero-cta {
-            display: flex;
-            gap: 20px;
-            justify-content: center;
-            flex-wrap: wrap;
-        }
-
-        .btn-primary {
-            background: #d69e2e;
-            color: white;
-            padding: 16px 32px;
-            border: none;
-            border-radius: 30px;
-            font-size: 18px;
-            font-weight: 600;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            text-decoration: none;
-            display: inline-block;
-        }
-
-        .btn-primary:hover {
-            background: #b7791f;
-            transform: translateY(-2px);
-            box-shadow: 0 8px 20px rgba(214, 158, 46, 0.3);
-        }
-
-        .btn-secondary {
-            background: transparent;
-            color: white;
-            padding: 16px 32px;
-            border: 2px solid white;
-            border-radius: 30px;
-            font-size: 18px;
-            font-weight: 600;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            text-decoration: none;
-            display: inline-block;
-        }
-
-        .btn-secondary:hover {
-            background: white;
-            color: #2f855a;
-        }
-
-        /* Features Section */
-        .features {
-            padding: 80px 0;
-            background: #f7fafc;
-        }
-
-        .features-container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 20px;
-            text-align: center;
-        }
-
-        .features h2 {
-            font-size: 2.5rem;
-            color: #2d3748;
-            margin-bottom: 20px;
-            font-weight: 700;
-        }
-
-        .features-subtitle {
-            font-size: 1.2rem;
-            color: #718096;
-            margin-bottom: 60px;
-            max-width: 600px;
-            margin-left: auto;
-            margin-right: auto;
-        }
-
-        .features-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 40px;
-            margin-top: 50px;
-        }
-
-        .feature-card {
-            background: white;
-            padding: 40px;
-            border-radius: 20px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
-            transition: all 0.3s ease;
-            border-top: 4px solid #38a169;
-        }
-
-        .feature-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 20px 40px rgba(0,0,0,0.15);
-        }
-
-        .feature-icon {
-            width: 60px;
-            height: 60px;
-            background: linear-gradient(135deg, #38a169, #2f855a);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin: 0 auto 20px;
-            color: white;
-            font-size: 24px;
-        }
-
-        .feature-card h3 {
-            font-size: 1.5rem;
-            color: #2d3748;
-            margin-bottom: 15px;
-            font-weight: 600;
-        }
-
-        .feature-card p {
-            color: #718096;
-            line-height: 1.7;
-        }
-
-        /* How It Works Section */
-        .how-it-works {
-            padding: 80px 0;
-            background: white;
-        }
-
-        .how-it-works-container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 20px;
-            text-align: center;
-        }
-
-        .how-it-works h2 {
-            font-size: 2.5rem;
-            color: #2d3748;
-            margin-bottom: 60px;
-            font-weight: 700;
-        }
-
-        .steps {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 40px;
-        }
-
-        .step {
-            position: relative;
-            padding: 20px;
-        }
-
-        .step-number {
-            width: 80px;
-            height: 80px;
-            background: linear-gradient(135deg, #d69e2e, #b7791f);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin: 0 auto 20px;
-            color: white;
-            font-size: 2rem;
-            font-weight: 700;
-        }
-
-        .step h3 {
-            font-size: 1.3rem;
-            color: #2d3748;
-            margin-bottom: 15px;
-            font-weight: 600;
-        }
-
-        .step p {
-            color: #718096;
-            line-height: 1.7;
-        }
-
-        /* Testimonial Section */
-        .testimonials {
-            padding: 80px 0;
-            background: linear-gradient(135deg, #2f855a 0%, #38a169 100%);
-            color: white;
-        }
-
-        .testimonials-container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 20px;
-            text-align: center;
-        }
-
-        .testimonials h2 {
-            font-size: 2.5rem;
-            margin-bottom: 20px;
-            font-weight: 700;
-        }
-
-        .testimonials-subtitle {
-            font-size: 1.2rem;
-            margin-bottom: 60px;
-            opacity: 0.9;
-        }
-
-        .testimonial-card {
-            background: rgba(255, 255, 255, 0.1);
-            backdrop-filter: blur(10px);
-            padding: 40px;
-            border-radius: 20px;
-            max-width: 800px;
-            margin: 0 auto;
-            border: 1px solid rgba(255, 255, 255, 0.2);
-        }
-
-        .testimonial-quote {
-            font-size: 1.3rem;
-            font-style: italic;
-            margin-bottom: 25px;
-            line-height: 1.8;
-        }
-
-        .testimonial-author {
-            font-weight: 600;
-            opacity: 0.9;
-        }
-
-        /* Newsletter Section */
-        .newsletter {
-            padding: 60px 0;
-            background: #f7fafc;
-        }
-
-        .newsletter-container {
-            max-width: 800px;
-            margin: 0 auto;
-            padding: 0 20px;
-            text-align: center;
-        }
-
-        .newsletter h2 {
-            font-size: 2rem;
-            color: #2d3748;
-            margin-bottom: 15px;
-            font-weight: 600;
-        }
-
-        .newsletter p {
-            color: #718096;
-            margin-bottom: 30px;
-            font-size: 1.1rem;
-        }
-
-        .newsletter-form {
-            display: flex;
-            gap: 15px;
-            max-width: 500px;
-            margin: 0 auto;
-            flex-wrap: wrap;
-        }
-
-        .newsletter-form input {
-            flex: 1;
-            padding: 15px 20px;
-            border: 2px solid #e2e8f0;
-            border-radius: 25px;
-            font-size: 16px;
-            min-width: 250px;
-        }
-
-        .newsletter-form input:focus {
-            outline: none;
-            border-color: #38a169;
-        }
-
-        .newsletter-form button {
-            background: #38a169;
-            color: white;
-            padding: 15px 25px;
-            border: none;
-            border-radius: 25px;
-            font-weight: 600;
-            cursor: pointer;
-            transition: all 0.3s ease;
-        }
-
-        .newsletter-form button:hover {
-            background: #2f855a;
-        }
-
-        /* Footer */
-        .footer {
-            background: #2d3748;
-            color: white;
-            padding: 60px 0 30px;
-        }
-
-        .footer-container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 20px;
-        }
-
-        .footer-content {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 40px;
-            margin-bottom: 40px;
-        }
-
-        .footer-section h3 {
-            font-size: 1.3rem;
-            margin-bottom: 20px;
-            font-weight: 600;
-            color: #c6f6d5;
-        }
-
-        .footer-section ul {
-            list-style: none;
-        }
-
-        .footer-section ul li {
-            margin-bottom: 10px;
-        }
-
-        .footer-section ul li a {
-            color: #a0aec0;
-            text-decoration: none;
-            transition: color 0.3s ease;
-        }
-
-        .footer-section ul li a:hover {
-            color: #c6f6d5;
-        }
-
-        .footer-bottom {
-            border-top: 1px solid #4a5568;
-            padding-top: 30px;
-            text-align: center;
-            color: #a0aec0;
-        }
-
-        /* Responsive Design */
-        @media (max-width: 768px) {
-            .hero h1 {
-                font-size: 2.5rem;
-            }
-
-            .hero-subtitle {
-                font-size: 1.2rem;
-            }
-
-            .hero-description {
-                font-size: 1rem;
-            }
-
-            .hero-cta {
-                flex-direction: column;
-                align-items: center;
-            }
-
-            .crisis-content {
-                flex-direction: column;
-                gap: 10px;
-                text-align: center;
-            }
-
-            .crisis-text {
-                font-size: 14px;
-            }
-
-            .nav-menu {
-                display: none;
-            }
-
-            .newsletter-form {
-                flex-direction: column;
-            }
-
-            .newsletter-form input {
-                min-width: 100%;
-            }
-        }
-
-        /* AI Feature Highlight */
-        .ai-highlight {
-            background: linear-gradient(135deg, #d69e2e 0%, #b7791f 100%);
-            color: white;
-            padding: 60px 0;
-        }
-
-        .ai-highlight-container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 20px;
-            text-align: center;
-        }
-
-        .ai-highlight h2 {
-            font-size: 2.5rem;
-            margin-bottom: 20px;
-            font-weight: 700;
-        }
-
-        .ai-highlight p {
-            font-size: 1.2rem;
-            margin-bottom: 30px;
-            opacity: 0.95;
-            max-width: 800px;
-            margin-left: auto;
-            margin-right: auto;
-        }
-
-        .ai-features {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 30px;
-            margin-top: 40px;
-        }
-
-        .ai-feature {
-            background: rgba(255, 255, 255, 0.1);
-            padding: 30px;
-            border-radius: 15px;
-            backdrop-filter: blur(10px);
-        }
-
-        .ai-feature h4 {
-            font-size: 1.2rem;
-            margin-bottom: 10px;
-            font-weight: 600;
-        }
-
-        .ai-feature p {
-            font-size: 1rem;
-            opacity: 0.9;
-            margin-bottom: 0;
+        
+        .therapist-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.1);
         }
     </style>
 </head>
-<body>
+<body class="bg-white">
     <!-- Crisis Banner -->
-    <div class="crisis-banner">
-        <div class="crisis-content">
-            <div class="crisis-icon">
-                <svg width="24" height="24" fill="currentColor" viewBox="0 0 24 24">
-                    <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/>
-                </svg>
+    <div class="bg-red-600 text-white py-4">
+        <div class="container mx-auto px-4 max-w-screen-xl">
+            <div class="flex items-center justify-center gap-4 text-sm">
+                <div class="flex items-center gap-2">
+                    <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+                        <path fill-rule="evenodd" d="M3.172 5.172a4 4 0 015.656 0L10 6.343l1.172-1.171a4 4 0 115.656 5.656L10 17.657l-6.828-6.829a4 4 0 010-5.656z" clip-rule="evenodd"></path>
+                    </svg>
+                    <span>Need immediate support? Crisis help is available 24/7</span>
+                </div>
+                <button class="bg-white text-red-600 px-4 py-2 rounded-md font-semibold hover:bg-gray-100 transition-colors">
+                    Get Help Now
+                </button>
             </div>
-            <div class="crisis-text">Need immediate support? Crisis help is available 24/7</div>
-            <button class="crisis-btn">
-                <svg width="16" height="16" fill="currentColor" viewBox="0 0 24 24">
-                    <path d="M20.01 15.38c-1.23 0-2.42-.2-3.53-.56-.35-.12-.74-.03-1.01.24l-1.57 1.97c-2.83-1.35-5.48-3.9-6.89-6.83l1.95-1.66c.27-.28.35-.67.24-1.02-.37-1.11-.56-2.3-.56-3.53 0-.54-.45-.99-.99-.99H4.19C3.65 3 3 3.24 3 3.99 3 13.28 10.73 21 20.01 21c.71 0 .99-.63.99-1.18v-3.45c0-.54-.45-.99-.99-.99z"/>
-                </svg>
-                Get Help Now
-            </button>
         </div>
     </div>
 
-    <!-- Header -->
-    <header class="header">
-        <div class="nav-container">
-            <div class="logo">Aura Healing Hub</div>
-            <nav class="nav-menu">
-                <li><a href="#home">Home</a></li>
-                <li><a href="#therapists">Find Therapists</a></li>
-                <li><a href="#resources">Resources</a></li>
-                <li><a href="#community">Community</a></li>
-                <li><a href="#about">About</a></li>
-            </nav>
-            <a href="#find-therapist" class="cta-btn">Find Your Therapist</a>
+    <!-- Navigation -->
+    <nav class="bg-white shadow-sm border-b border-gray-100">
+        <div class="container mx-auto px-4 max-w-screen-xl" style="margin-left: 140px; margin-right: 140px;">
+            <div class="flex items-center justify-between h-20">
+                <div class="flex items-center gap-3">
+                    <!-- Concentric Circles Logo (300 degree offset) -->
+                    <svg width="60" height="60" viewBox="0 0 120 120" class="flex-shrink-0">
+                        <defs>
+                            <radialGradient id="outerGradient" cx="0.5" cy="0.5" r="0.5">
+                                <stop offset="0%" style="stop-color:#2F855A;stop-opacity:0.8" />
+                                <stop offset="100%" style="stop-color:#2F855A;stop-opacity:1" />
+                            </radialGradient>
+                            <radialGradient id="middleGradient" cx="0.5" cy="0.5" r="0.5">
+                                <stop offset="0%" style="stop-color:#D69E2E;stop-opacity:0.9" />
+                                <stop offset="100%" style="stop-color:#D69E2E;stop-opacity:1" />
+                            </radialGradient>
+                            <radialGradient id="innerGradient" cx="0.5" cy="0.5" r="0.5">
+                                <stop offset="0%" style="stop-color:#C05621;stop-opacity:0.8" />
+                                <stop offset="100%" style="stop-color:#C05621;stop-opacity:1" />
+                            </radialGradient>
+                        </defs>
+                        
+                        <!-- Outer circle (offset at 300 degrees) -->
+                        <circle cx="75" cy="45" r="25" fill="url(#outerGradient)" opacity="0.9">
+                            <animate attributeName="opacity" values="0.7;1;0.7" dur="3s" repeatCount="indefinite"/>
+                        </circle>
+                        
+                        <!-- Middle circle (offset at 300 degrees) -->
+                        <circle cx="65" cy="55" r="18" fill="url(#middleGradient)" opacity="0.8">
+                            <animate attributeName="opacity" values="0.6;0.9;0.6" dur="3s" repeatCount="indefinite" begin="1s"/>
+                        </circle>
+                        
+                        <!-- Inner circle (offset at 300 degrees) -->
+                        <circle cx="55" cy="65" r="12" fill="url(#innerGradient)" opacity="1">
+                            <animate attributeName="opacity" values="0.8;1;0.8" dur="3s" repeatCount="indefinite" begin="2s"/>
+                        </circle>
+                        
+                        <!-- Unity highlight at center intersection -->
+                        <circle cx="65" cy="55" r="8" fill="#ffffff" opacity="0.3"/>
+                    </svg>
+                    <span class="text-2xl font-bold text-green-800">Aura Healing Hub</span>
+                </div>
+                <div class="hidden md:flex items-center space-x-8">
+                    <a href="#" class="text-green-800 hover:text-green-600 font-medium transition-colors hover:border-b-2 hover:border-green-600 pb-1">Find Therapist</a>
+                    <a href="#" class="text-green-800 hover:text-green-600 font-medium transition-colors hover:border-b-2 hover:border-green-600 pb-1">How it Works</a>
+                    <a href="#" class="text-green-800 hover:text-green-600 font-medium transition-colors hover:border-b-2 hover:border-green-600 pb-1">Resources</a>
+                    <a href="#" class="text-green-800 hover:text-green-600 font-medium transition-colors hover:border-b-2 hover:border-green-600 pb-1">About</a>
+                </div>
+            </div>
         </div>
-    </header>
+    </nav>
 
     <!-- Hero Section -->
-    <section class="hero" id="home">
-        <div class="hero-container">
-            <h1>You Matter. You Are Understood. You Are Whole.</h1>
-            <p class="hero-subtitle">Culturally competent mental health care for the Black community</p>
-            <p class="hero-description">
-                Aura Healing Hub is your safe space to connect with therapists who understand your cultural experience, 
-                address systemic challenges, and support your journey to wellness and wholeness.
-            </p>
-            <div class="hero-cta">
-                <a href="#find-therapist" class="btn-primary">Find Your Therapist</a>
-                <a href="#how-it-works" class="btn-secondary">Learn How It Works</a>
-            </div>
-        </div>
-    </section>
-
-    <!-- Features Section -->
-    <section class="features" id="features">
-        <div class="features-container">
-            <h2>Designed For Your Healing Journey</h2>
-            <p class="features-subtitle">
-                We understand the unique challenges you face. Our platform provides culturally affirming 
-                support that honors your experiences and celebrates your strength.
-            </p>
-            <div class="features-grid">
-                <div class="feature-card">
-                    <div class="feature-icon">🤝</div>
-                    <h3>Cultural Competence</h3>
-                    <p>Connect with therapists who understand your lived experience, cultural background, and the impact of systemic racism on mental health.</p>
-                </div>
-                <div class="feature-card">
-                    <div class="feature-icon">🎯</div>
-                    <h3>AI-Powered Matching</h3>
-                    <p>Our intelligent system matches you with therapists based on your specific needs, preferences, and cultural considerations.</p>
-                </div>
-                <div class="feature-card">
-                    <div class="feature-icon">📚</div>
-                    <h3>Mental Health Education</h3>
-                    <p>Access culturally relevant resources, articles, and tools that address stigma and promote mental health literacy in our community.</p>
-                </div>
-                <div class="feature-card">
-                    <div class="feature-icon">🏘️</div>
-                    <h3>Community Support</h3>
-                    <p>Join a supportive community where you can share experiences, find encouragement, and connect with others on similar journeys.</p>
-                </div>
-                <div class="feature-card">
-                    <div class="feature-icon">⚖️</div>
-                    <h3>Advocacy & Navigation</h3>
-                    <p>Get support navigating healthcare systems, insurance, and finding resources that work for your specific situation.</p>
-                </div>
-                <div class="feature-card">
-                    <div class="feature-icon">💡</div>
-                    <h3>Trauma-Informed Care</h3>
-                    <p>Work with professionals trained in addressing historical, generational, and contemporary trauma affecting the Black community.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- AI Highlight Section -->
-    <section class="ai-highlight">
-        <div class="ai-highlight-container">
-            <h2>AI-Powered Personalization</h2>
-            <p>Our advanced matching system considers your unique cultural, clinical, and personal needs to connect you with the right therapist.</p>
-            <div class="ai-features">
-                <div class="ai-feature">
-                    <h4>Personalized Matches</h4>
-                    <p>AI analyzes your preferences, background, and therapeutic needs for optimal therapist pairing</p>
-                </div>
-                <div class="ai-feature">
-                    <h4>Cultural Considerations</h4>
-                    <p>Algorithm accounts for cultural competency, lived experience, and community understanding</p>
-                </div>
-                <div class="ai-feature">
-                    <h4>Continuous Learning</h4>
-                    <p>System improves recommendations based on community feedback and successful matches</p>
-                </div>
-                <div class="ai-feature">
-                    <h4>Barrier Reduction</h4>
-                    <p>Guided tools help ease entry into therapy and address common hesitations</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- How It Works Section -->
-    <section class="how-it-works" id="how-it-works">
-        <div class="how-it-works-container">
-            <h2>Your Path to Healing</h2>
-            <div class="steps">
-                <div class="step">
-                    <div class="step-number">1</div>
-                    <h3>Share Your Story</h3>
-                    <p>Tell us about your background, preferences, and what you're looking for in a therapist. We honor your experiences.</p>
-                </div>
-                <div class="step">
-                    <div class="step-number">2</div>
-                    <h3>Get Matched</h3>
-                    <p>Our AI system finds therapists who understand your cultural context and specialize in your areas of need.</p>
-                </div>
-                <div class="step">
-                    <div class="step-number">3</div>
-                    <h3>Connect & Begin</h3>
-                    <p>Schedule consultations with recommended therapists and begin your journey with someone who truly gets you.</p>
-                </div>
-                <div class="step">
-                    <div class="step-number">4</div>
-                    <h3>Grow & Thrive</h3>
-                    <p>Access ongoing support, community resources, and educational content as you progress in your healing.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Testimonials Section -->
-    <section class="testimonials">
-        <div class="testimonials-container">
-            <h2>Voices From Our Community</h2>
-            <p class="testimonials-subtitle">Real stories from real people who found healing and hope</p>
-            <div class="testimonial-card">
-                <p class="testimonial-quote">
-                    "For the first time, I felt truly understood. My therapist didn't just see my symptoms - 
-                    she saw the whole me, including the strength I carry from my ancestors and the challenges 
-                    I face today. This platform changed my life."
-                </p>
-                <div class="testimonial-author">- Community Member</div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Newsletter Section -->
-    <section class="newsletter">
-        <div class="newsletter-container">
-            <h2>Stay Connected to Your Community</h2>
-            <p>Get mental health resources, community updates, and culturally relevant wellness tips delivered to your inbox.</p>
-            <form class="newsletter-form">
-                <input type="email" placeholder="Enter your email address" required>
-                <button type="submit">Subscribe</button>
-            </form>
-        </div>
-    </section>
-
-    <!-- Footer -->
-    <footer class="footer">
-        <div class="footer-container">
-            <div class="footer-content">
-                <div class="footer-section">
-                    <h3>Aura Healing Hub</h3>
-                    <p style="color: #a0aec0; line-height: 1.6;">
-                        A culturally affirming mental health platform dedicated to connecting the Black community 
-                        with therapists who understand, validate, and celebrate your journey to wellness.
+    <section class="py-20 bg-gradient-to-br from-green-50 to-emerald-100 relative overflow-hidden">
+        <div class="container mx-auto px-4 max-w-screen-xl">
+            <div class="grid grid-cols-12 gap-8 items-center">
+                <!-- Text Content - 5 columns wide -->
+                <div class="col-span-12 lg:col-span-5 z-10">
+                    <!-- Main Headline -->
+                    <h1 class="mb-6">
+                        <span class="block text-green-800 font-inter text-6xl font-bold leading-[78px]">
+                            Find a Therapist That Truly Gets
+                        </span>
+                        <span class="block text-terracotta font-crimson text-[80px] font-normal italic leading-normal">
+                            You
+                        </span>
+                    </h1>
+                    
+                    <!-- Subheadline -->
+                    <p class="text-green-800 font-inter text-xl font-medium leading-[34px] tracking-[0.4px] mb-[59px]">
+                        Connect with culturally competent mental health professionals who understand your experiences and respect your privacy.
                     </p>
+                    
+                    <!-- Buttons -->
+                    <div class="flex flex-col sm:flex-row gap-[14px]">
+                        <button onclick="startMatching()" class="flex justify-center items-center w-[231px] h-[60px] px-6 py-3 bg-terracotta border border-terracotta-border rounded-lg text-white font-inter font-semibold hover:bg-[#A84A1C] transition-all duration-200 hover:scale-105">
+                            Find Your Therapist
+                        </button>
+                        <button class="flex justify-center items-center w-[216px] h-[60px] px-6 py-3 border-2 border-terracotta rounded-lg text-terracotta font-inter font-semibold hover:bg-orange-50 transition-all duration-200 hover:scale-105">
+                            Learn More
+                        </button>
+                    </div>
                 </div>
-                <div class="footer-section">
-                    <h3>Quick Links</h3>
-                    <ul>
-                        <li><a href="#therapists">Find Therapists</a></li>
-                        <li><a href="#resources">Mental Health Resources</a></li>
-                        <li><a href="#community">Join Community</a></li>
-                        <li><a href="#crisis">Crisis Support</a></li>
-                    </ul>
+                
+                <!-- Hero Image - 7 columns -->
+                <div class="col-span-12 lg:col-span-7">
+                    <div class="relative">
+                        <img src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNjAwIiBoZWlnaHQ9IjQwMCIgdmlld0JveD0iMCAwIDYwMCA0MDAiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CjxyZWN0IHdpZHRoPSI2MDAiIGhlaWdodD0iNDAwIiBmaWxsPSJ1cmwoI3BhaW50MF9saW5lYXJfMF8xKSIvPgo8ZGVmcz4KPGxpbmVhckdyYWRpZW50IGlkPSJwYWludDBfbGluZWFyXzBfMSIgeDE9IjAiIHkxPSIwIiB4Mj0iNjAwIiB5Mj0iNDAwIiBncmFkaWVudFVuaXRzPSJ1c2VyU3BhY2VPblVzZSI+CjxzdG9wIHN0b3AtY29sb3I9IiMyRjg1NUEiIHN0b3Atb3BhY2l0eT0iMC4zIi8+CjxzdG9wIG9mZnNldD0iMSIgc3RvcC1jb2xvcj0iIzJGODU1QSIgc3RvcC1vcGFjaXR5PSIwLjciLz4KPC9saW5lYXJHcmFkaWVudD4KPC9kZWZzPgo8L3N2Zz4K" 
+                             alt="Supportive group therapy session with diverse Black community members" 
+                             class="w-full h-96 object-cover rounded-2xl shadow-lg"/>
+                        <div class="absolute inset-0 bg-green-800 opacity-20 rounded-2xl"></div>
+                        <div class="absolute bottom-4 left-4 text-white">
+                            <p class="text-gray-600 text-sm">${therapist.credentials}</p>
+                            <p class="text-gray-500 text-sm">${therapist.location} • ${therapist.experience} experience</p>
+                        </div>
+                    </div>
+                    
+                    <div class="mb-4">
+                        <p class="text-gray-700 text-sm leading-relaxed">${therapist.bio}</p>
+                    </div>
+                    
+                    <div class="mb-4">
+                        <h4 class="font-semibold text-gray-800 text-sm mb-2">Specialties:</h4>
+                        <div class="flex flex-wrap gap-2">
+                            ${therapist.specialties.map(specialty => 
+                                `<span class="bg-gray-100 text-gray-700 px-2 py-1 rounded-full text-xs">${specialty}</span>`
+                            ).join('')}
+                        </div>
+                    </div>
+                    
+                    <div class="mb-6">
+                        <h4 class="font-semibold text-gray-800 text-sm mb-2">Qualifications & Approach:</h4>
+                        <div class="flex flex-wrap gap-2">
+                            ${therapist.badges.map(badge => {
+                                let badgeClass = 'bg-green-100 text-green-800';
+                                if (badge.includes('Racial Trauma')) badgeClass = 'bg-red-100 text-red-800';
+                                else if (badge.includes('LGBTQ+')) badgeClass = 'bg-purple-100 text-purple-800';
+                                else if (badge.includes('Family')) badgeClass = 'bg-blue-100 text-blue-800';
+                                else if (badge.includes('Virtual') || badge.includes('In-Person')) badgeClass = 'bg-gray-100 text-gray-700';
+                                
+                                return `<span class="badge-hover ${badgeClass} px-3 py-1 rounded-full text-xs font-medium">${badge}</span>`;
+                            }).join('')}
+                        </div>
+                    </div>
+                    
+                    <div class="flex gap-2">
+                        <button class="flex-1 bg-terracotta text-white px-4 py-3 rounded-lg font-semibold hover:bg-[#A84A1C] transition-all duration-200 hover:scale-105">
+                            Book Consultation
+                        </button>
+                        <button class="px-4 py-3 border-2 border-terracotta text-terracotta rounded-lg font-semibold hover:bg-orange-50 transition-all duration-200">
+                            View Profile
+                        </button>
+                    </div>
                 </div>
-                <div class="footer-section">
-                    <h3>Support</h3>
-                    <ul>
-                        <li><a href="#help">Help Center</a></li>
-                        <li><a href="#insurance">Insurance Guide</a></li>
-                        <li><a href="#accessibility">Accessibility</a></li>
-                        <li><a href="#contact">Contact Us</a></li>
-                    </ul>
+            `;
+        }
+
+        function showResults() {
+            const resultsSection = document.getElementById('results-section');
+            const filterSummary = document.getElementById('filter-summary');
+            const therapistGrid = document.getElementById('therapist-grid');
+            
+            // Show filter tags
+            const filterTags = getFilterTags();
+            filterSummary.innerHTML = filterTags.map(tag => 
+                `<span class="${tag.class} px-3 py-1 rounded-full text-sm font-medium">${tag.text}</span>`
+            ).join('');
+            
+            // Show filtered therapists
+            const filteredTherapists = filterTherapists();
+            therapistGrid.innerHTML = filteredTherapists.map(therapist => createTherapistCard(therapist)).join('');
+            
+            resultsSection.classList.remove('hidden');
+            resultsSection.scrollIntoView({ behavior: 'smooth' });
+        }
+
+        // Initialize progress
+        updateProgress();
+    </script>
+</body>
+</html> class="text-sm font-medium">Culturally affirming healing spaces</p>
+                        </div>
+                    </div>
                 </div>
-                <div class="footer-section">
-                    <h3>Connect</h3>
-                    <ul>
-                        <li><a href="#blog">Blog</a></li>
-                        <li><a href="#newsletter">Newsletter</a></li>
-                        <li><a href="#events">Community Events</a></li>
-                        <li><a href="#partnerships">Partnerships</a></li>
-                    </ul>
-                </div>
-            </div>
-            <div class="footer-bottom">
-                <p>&copy; 2024 Aura Healing Hub. All rights reserved. | Privacy Policy | Terms of Service</p>
-                <p style="margin-top: 10px; font-size: 14px;">
-                    If you're in crisis, call 988 Suicide & Crisis Lifeline or text "HELLO" to 741741
-                </p>
             </div>
         </div>
-    </footer>
+    </section>
+
+    <!-- AI Matching Chat Section -->
+    <section id="matching-section" class="hidden py-16 bg-white">
+        <div class="container mx-auto px-4 max-w-4xl">
+            <div class="text-center mb-8">
+                <h2 class="text-3xl font-bold text-green-800 mb-4">Let's Find Your Perfect Match</h2>
+                <p class="text-green-700">I'll ask a few questions to connect you with the right culturally competent therapist</p>
+            </div>
+            
+            <!-- Progress Indicator -->
+            <div class="mb-8">
+                <div class="flex justify-center items-center gap-2 mb-2">
+                    <span class="text-sm text-green-600" id="progress-text">Step 1 of 4</span>
+                </div>
+                <div class="w-full bg-gray-200 rounded-full h-2">
+                    <div id="progress-bar" class="bg-green-600 h-2 rounded-full transition-all duration-500" style="width: 25%"></div>
+                </div>
+            </div>
+
+            <!-- Chat Interface -->
+            <div class="bg-gray-50 rounded-xl p-6 max-w-2xl mx-auto">
+                <div id="chat-messages" class="space-y-4 mb-6 min-h-[300px] max-h-[400px] overflow-y-auto">
+                    <!-- Initial message -->
+                    <div class="flex gap-3 chat-message">
+                        <div class="w-8 h-8 bg-green-600 rounded-full flex items-center justify-center flex-shrink-0">
+                            <svg class="w-4 h-4 text-white" fill="currentColor" viewBox="0 0 20 20">
+                                <path fill-rule="evenodd" d="M18 10c0 3.866-3.582 7-8 7a8.841 8.841 0 01-4.083-.98L2 17l1.338-3.123C2.493 12.767 2 11.434 2 10c0-3.866 3.582-7 8-7s8 3.134 8 7zM7 9H5v2h2V9zm8 0h-2v2h2V9zM9 9h2v2H9V9z" clip-rule="evenodd"></path>
+                            </svg>
+                        </div>
+                        <div class="bg-white p-4 rounded-lg shadow-sm flex-1">
+                            <p class="text-gray-800">Hi! I'm here to help you find the right therapist. First, I need to ask - are you currently experiencing any thoughts of self-harm or having a mental health crisis?</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Response Options -->
+                <div id="response-options" class="space-y-3">
+                    <button onclick="handleResponse('no-crisis')" class="w-full text-left p-4 bg-white rounded-lg border border-gray-200 hover:border-green-500 hover:bg-green-50 transition-all duration-200">
+                        <span class="text-gray-800">No, I'm not in crisis and feel safe</span>
+                    </button>
+                    <button onclick="handleResponse('need-crisis-help')" class="w-full text-left p-4 bg-red-50 rounded-lg border border-red-200 hover:border-red-500 hover:bg-red-100 transition-all duration-200">
+                        <span class="text-red-700">Yes, I need immediate help</span>
+                    </button>
+                </div>
+
+                <!-- Typing Indicator -->
+                <div id="typing-indicator" class="hidden flex gap-3 mt-4">
+                    <div class="w-8 h-8 bg-green-600 rounded-full flex items-center justify-center">
+                        <svg class="w-4 h-4 text-white" fill="currentColor" viewBox="0 0 20 20">
+                            <path fill-rule="evenodd" d="M18 10c0 3.866-3.582 7-8 7a8.841 8.841 0 01-4.083-.98L2 17l1.338-3.123C2.493 12.767 2 11.434 2 10c0-3.866 3.582-7 8-7s8 3.134 8 7zM7 9H5v2h2V9zm8 0h-2v2h2V9zM9 9h2v2H9V9z" clip-rule="evenodd"></path>
+                        </svg>
+                    </div>
+                    <div class="bg-white p-4 rounded-lg shadow-sm">
+                        <div class="flex space-x-1">
+                            <div class="w-2 h-2 bg-gray-400 rounded-full animate-bounce"></div>
+                            <div class="w-2 h-2 bg-gray-400 rounded-full animate-bounce" style="animation-delay: 0.1s"></div>
+                            <div class="w-2 h-2 bg-gray-400 rounded-full animate-bounce" style="animation-delay: 0.2s"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Therapist Results Section -->
+    <section id="results-section" class="hidden py-16 bg-gray-50">
+        <div class="container mx-auto px-4 max-w-6xl">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl font-bold text-green-800 mb-4">Your Culturally Matched Therapists</h2>
+                <p class="text-green-700">Based on your preferences, here are therapists who understand your experiences</p>
+            </div>
+
+            <!-- Filter Summary -->
+            <div class="bg-white p-4 rounded-lg shadow-sm mb-8">
+                <h3 class="font-semibold text-gray-800 mb-2">Your Matches Based On:</h3>
+                <div class="flex flex-wrap gap-2" id="filter-summary">
+                    <!-- Filters will be populated based on chat responses -->
+                </div>
+            </div>
+
+            <!-- Therapist Cards Grid -->
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6" id="therapist-grid">
+                <!-- Therapist cards will be populated by JavaScript -->
+            </div>
+        </div>
+    </section>
 
     <script>
-        // Simple scroll effects and interactivity
-        document.addEventListener('DOMContentLoaded', function() {
-            // Smooth scrolling for navigation links
-            const links = document.querySelectorAll('a[href^="#"]');
-            links.forEach(link => {
-                link.addEventListener('click', function(e) {
-                    e.preventDefault();
-                    const targetId = this.getAttribute('href');
-                    const targetSection = document.querySelector(targetId);
-                    if (targetSection) {
-                        targetSection.scrollIntoView({
-                            behavior: 'smooth',
-                            block: 'start'
-                        });
-                    }
-                });
+        let currentStep = 1;
+        let userPreferences = {};
+
+        const chatSteps = [
+            {
+                question: "Thank you for confirming you're safe. Now, have you experienced racial microaggressions, discrimination, or trauma that you'd like support processing?",
+                options: [
+                    { text: "Yes, I've experienced racial trauma and need specialized support", value: "racial-trauma-yes" },
+                    { text: "I'm not sure, but I'd like a therapist who understands these experiences", value: "racial-trauma-maybe" },
+                    { text: "No, this isn't a primary concern for me", value: "racial-trauma-no" }
+                ]
+            },
+            {
+                question: "Do you identify as LGBTQ+ or need a therapist who is affirming of diverse sexual orientations and gender identities?",
+                options: [
+                    { text: "Yes, LGBTQ+ affirmation is essential for me", value: "lgbtq-essential" },
+                    { text: "I'd prefer an LGBTQ+ affirming therapist", value: "lgbtq-preferred" },
+                    { text: "This is not a concern for me", value: "lgbtq-not-needed" }
+                ]
+            },
+            {
+                question: "What type of therapeutic support are you primarily seeking?",
+                options: [
+                    { text: "Individual therapy for anxiety, depression, or stress", value: "individual-therapy" },
+                    { text: "Family or relationship counseling", value: "family-therapy" },
+                    { text: "Trauma-focused therapy", value: "trauma-therapy" },
+                    { text: "I'm not sure, I need help figuring this out", value: "unsure-therapy" }
+                ]
+            }
+        ];
+
+        const therapistData = [
+            {
+                name: "Dr. Keisha Williams",
+                credentials: "PhD, Licensed Psychologist",
+                location: "Atlanta, GA",
+                experience: "12 years",
+                specialties: ["Racial Trauma", "Anxiety & Depression", "LGBTQ+ Affirming"],
+                badges: ["Racial Trauma Healing", "Culturally Competent", "LGBTQ+ Affirming", "Black Family Systems", "Virtual Sessions"],
+                bio: "Dr. Williams specializes in helping Black individuals navigate racial trauma and systemic stress...",
+                image: "👩🏾‍⚕️"
+            },
+            {
+                name: "Marcus Thompson, LCSW",
+                credentials: "LCSW, Trauma Specialist",
+                location: "Chicago, IL",
+                experience: "8 years",
+                specialties: ["Men's Mental Health", "Racial Trauma", "Anxiety"],
+                badges: ["Racial Trauma Healing", "Culturally Competent", "Men's Mental Health", "In-Person Sessions", "Sliding Scale"],
+                bio: "Marcus focuses on helping Black men process societal pressures and racial stress...",
+                image: "👨🏿‍⚕️"
+            },
+            {
+                name: "Dr. Amara Johnson",
+                credentials: "PsyD, LMFT",
+                location: "Washington, DC",
+                experience: "15 years",
+                specialties: ["Family Therapy", "Intergenerational Trauma", "LGBTQ+ Issues"],
+                badges: ["Black Family Systems", "LGBTQ+ Affirming", "Culturally Competent", "Family Therapy", "Virtual Sessions"],
+                bio: "Dr. Johnson works with Black families to heal generational patterns and build stronger connections...",
+                image: "👩🏽‍⚕️"
+            },
+            {
+                name: "James Mitchell, LPC",
+                credentials: "LPC, EMDR Certified",
+                location: "Houston, TX",
+                experience: "10 years",
+                specialties: ["PTSD", "Racial Trauma", "EMDR"],
+                badges: ["Racial Trauma Healing", "PTSD Specialist", "EMDR Certified", "Culturally Competent", "Insurance Accepted"],
+                bio: "James uses EMDR and other evidence-based approaches to help clients heal from racial trauma...",
+                image: "👨🏾‍⚕️"
+            },
+            {
+                name: "Dr. Zara Hassan",
+                credentials: "PhD, Licensed Psychologist",
+                location: "Los Angeles, CA",
+                experience: "9 years",
+                specialties: ["Intersectionality", "LGBTQ+ Issues", "Identity Development"],
+                badges: ["LGBTQ+ Affirming", "Culturally Competent", "Identity & Intersectionality", "Young Adult Specialist", "Virtual Sessions"],
+                bio: "Dr. Hassan specializes in helping clients navigate multiple identities and intersectional experiences...",
+                image: "👩🏿‍⚕️"
+            },
+            {
+                name: "Simone Davis, LMFT",
+                credentials: "LMFT, Gottman Trained",
+                location: "Oakland, CA",
+                experience: "11 years",
+                specialties: ["Couples Therapy", "Black Relationships", "Communication"],
+                badges: ["Black Family Systems", "Couples Therapy", "Culturally Competent", "Gottman Method", "In-Person Sessions"],
+                bio: "Simone helps Black couples build stronger relationships while navigating external stressors...",
+                image: "👩🏾‍⚕️"
+            }
+        ];
+
+        function startMatching() {
+            document.getElementById('matching-section').classList.remove('hidden');
+            document.getElementById('matching-section').scrollIntoView({ behavior: 'smooth' });
+        }
+
+        function showTyping() {
+            document.getElementById('typing-indicator').classList.remove('hidden');
+            document.getElementById('response-options').classList.add('hidden');
+        }
+
+        function hideTyping() {
+            document.getElementById('typing-indicator').classList.add('hidden');
+            document.getElementById('response-options').classList.remove('hidden');
+        }
+
+        function addMessage(content, isUser = false) {
+            const chatMessages = document.getElementById('chat-messages');
+            const messageDiv = document.createElement('div');
+            messageDiv.className = `flex gap-3 chat-message ${isUser ? 'justify-end' : ''}`;
+            
+            if (isUser) {
+                messageDiv.innerHTML = `
+                    <div class="bg-green-600 text-white p-4 rounded-lg shadow-sm max-w-xs">
+                        <p>${content}</p>
+                    </div>
+                `;
+            } else {
+                messageDiv.innerHTML = `
+                    <div class="w-8 h-8 bg-green-600 rounded-full flex items-center justify-center flex-shrink-0">
+                        <svg class="w-4 h-4 text-white" fill="currentColor" viewBox="0 0 20 20">
+                            <path fill-rule="evenodd" d="M18 10c0 3.866-3.582 7-8 7a8.841 8.841 0 01-4.083-.98L2 17l1.338-3.123C2.493 12.767 2 11.434 2 10c0-3.866 3.582-7 8-7s8 3.134 8 7zM7 9H5v2h2V9zm8 0h-2v2h2V9zM9 9h2v2H9V9z" clip-rule="evenodd"></path>
+                        </svg>
+                    </div>
+                    <div class="bg-white p-4 rounded-lg shadow-sm flex-1">
+                        <p class="text-gray-800">${content}</p>
+                    </div>
+                `;
+            }
+            
+            chatMessages.appendChild(messageDiv);
+            chatMessages.scrollTop = chatMessages.scrollHeight;
+        }
+
+        function updateProgress() {
+            const progressBar = document.getElementById('progress-bar');
+            const progressText = document.getElementById('progress-text');
+            const percentage = (currentStep / 4) * 100;
+            
+            progressBar.style.width = percentage + '%';
+            progressText.textContent = `Step ${currentStep} of 4`;
+        }
+
+        function updateResponseOptions(options) {
+            const optionsContainer = document.getElementById('response-options');
+            optionsContainer.innerHTML = '';
+            
+            options.forEach(option => {
+                const button = document.createElement('button');
+                button.className = 'w-full text-left p-4 bg-white rounded-lg border border-gray-200 hover:border-green-500 hover:bg-green-50 transition-all duration-200';
+                button.innerHTML = `<span class="text-gray-800">${option.text}</span>`;
+                button.onclick = () => handleResponse(option.value, option.text);
+                optionsContainer.appendChild(button);
             });
+        }
 
-            // Newsletter form submission
-            const newsletterForm = document.querySelector('.newsletter-form');
-            if (newsletterForm) {
-                newsletterForm.addEventListener('submit', function(e) {
-                    e.preventDefault();
-                    const email = this.querySelector('input[type="email"]').value;
-                    alert('Thank you for subscribing! We\'ll be in touch soon.');
-                    this.reset();
-                });
+        function handleResponse(value, text) {
+            if (value === 'need-crisis-help') {
+                addMessage(text, true);
+                showTyping();
+                setTimeout(() => {
+                    hideTyping();
+                    addMessage("I understand this is urgent. Please call the National Suicide Prevention Lifeline at 988 or text 'HELLO' to 741741 for immediate support. You can also call 911 if you're in immediate danger. After you're safe, we're here to help you find ongoing support.");
+                }, 1500);
+                return;
             }
 
-            // Crisis button click handler
-            const crisisBtn = document.querySelector('.crisis-btn');
-            if (crisisBtn) {
-                crisisBtn.addEventListener('click', function() {
-                    alert('Crisis Support Resources:\n\n988 Suicide & Crisis Lifeline: Call 988\nCrisis Text Line: Text HOME to 741741\nNational Alliance on Mental Illness: 1-800-950-NAMI\n\nIf you\'re in immediate danger, call 911.');
-                });
-            }
+            addMessage(text, true);
+            userPreferences[`step${currentStep}`] = value;
+            
+            showTyping();
+            
+            setTimeout(() => {
+                hideTyping();
+                
+                if (currentStep < chatSteps.length) {
+                    const nextStep = chatSteps[currentStep - 1];
+                    addMessage(nextStep.question);
+                    updateResponseOptions(nextStep.options);
+                    currentStep++;
+                    updateProgress();
+                } else {
+                    addMessage("Perfect! Based on your responses, I've found several therapists who would be great matches for you. Let me show you their profiles.");
+                    setTimeout(() => {
+                        showResults();
+                    }, 2000);
+                }
+            }, 1500);
+        }
 
-            // Add animation classes on scroll
-            const observerOptions = {
-                threshold: 0.1,
+        function getFilterTags() {
+            const tags = [];
+            
+            if (userPreferences.step1 === 'racial-trauma-yes') {
+                tags.push({ text: 'Racial Trauma Specialist', class: 'bg-red-100 text-red-800' });
+            }
+            if (userPreferences.step1 === 'racial-trauma-maybe') {
+                tags.push({ text: 'Culturally Competent', class: 'bg-green-100 text-green-800' });
+            }
+            if (userPreferences.step2 === 'lgbtq-essential' || userPreferences.step2 === 'lgbtq-preferred') {
+                tags.push({ text: 'LGBTQ+ Affirming', class: 'bg-purple-100 text-purple-800' });
+            }
+            if (userPreferences.step3 === 'family-therapy') {
+                tags.push({ text: 'Family Therapy', class: 'bg-blue-100 text-blue-800' });
+            }
+            if (userPreferences.step3 === 'trauma-therapy') {
+                tags.push({ text: 'Trauma Focused', class: 'bg-orange-100 text-orange-800' });
+            }
+            
+            return tags;
+        }
+
+        function filterTherapists() {
+            return therapistData.filter(therapist => {
+                let matches = true;
+                
+                // Filter based on racial trauma needs
+                if (userPreferences.step1 === 'racial-trauma-yes') {
+                    matches = matches && therapist.badges.includes('Racial Trauma Healing');
+                }
+                
+                // Filter based on LGBTQ+ needs
+                if (userPreferences.step2 === 'lgbtq-essential') {
+                    matches = matches && therapist.badges.includes('LGBTQ+ Affirming');
+                }
+                
+                return matches;
+            });
+        }
+
+        function createTherapistCard(therapist) {
+            return `
+                <div class="bg-white rounded-xl shadow-lg therapist-card p-6">
+                    <div class="flex items-start gap-4 mb-4">
+                        <div class="text-4xl">${therapist.image}</div>
+                        <div class="flex-1">
+                            <h3 class="font-bold text-lg text-gray-800">${therapist.name}</h3>
+                            <p
